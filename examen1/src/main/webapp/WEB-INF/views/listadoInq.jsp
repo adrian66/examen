@@ -23,19 +23,21 @@ Buscar:<input type="text" id="txtBuscar"
 				placeholder="Pon tu busqueda">
 	   <input type="button" id="btnBuscar" value="buscar" onclick="buscar()"> 
 <table id="tblDatos">
-<c:forEach items="${propietarios }" var="propietario">
+<c:forEach items="${inquilinos }" var="propietario">
 	<tr>
-		<td>${propietario.nombre }</td>
-		<td>${propietario.dni }</td>
-		<td><a href="detalle.html?id=${propietario.idPropietario}">
+		<td>${inquilino.nombre }</td>
+		<td>${inquilino.dni }</td>
+		<td>${inquilino.edad }</td>
+		<td>${inquilino.trabaja }</td>
+		<td><a href="detalle.html?id=${inquilino.idInquilino}">
 				Ver detalle
 			</a>
 			<a href="#" id="lnkDetalle" 
-					onclick="evento(${propietario.idPropietario})">
+					onclick="evento(${inquilino.idInquilino})">
 				Detalle Ajax
 			</a>
 			<a href="#" id="lnkBorrar" 
-			onclick="borrar(${propietario.idPropietario})">Borrar</a>
+			onclick="borrar(${inquilino.idInquilino})">Borrar</a>
 		</td>
 	</tr>
 
@@ -48,12 +50,12 @@ Buscar:<input type="text" id="txtBuscar"
 
 function borrar(id){
 
-	var datos={idPropietario:id};
+	var datos={idInquilino:id};
 
 	var datosPasar=JSON.stringify(datos);
 
 	$.ajax(
-			"propietario",{
+			"inquilino",{
 				data:datosPasar,
 				method: "DELETE",
 				contentType: "application/json",
@@ -77,7 +79,7 @@ function buscar(){
 	var tx=$("#txtBuscar").val();
 	if(tx=="")
 		tx="SinBusqueda";
-	var url="propietario/buscar/"+tx;	
+	var url="inquilino/buscar/"+tx;	
 
 	$.get(url,function(res){
 
@@ -93,11 +95,11 @@ function buscar(){
 			h+="<td>"+res[i].nombre+"</td>";
 			h+="<td>"+res[i].dni+"</td>";
 			h+="<td><a href='detalle_"+
-					res[i].idPropietario+".html'>Detalle  </a> ";
+					res[i].idInquilino+".html'>Detalle  </a> ";
 			h+="<a href='#' onclick='evento("+
-				res[i].idPropietario+")'>Detalle ajax  </a> ";
+				res[i].idInquilino+")'>Detalle ajax  </a> ";
 			h+="<a href='#' onclick='borrar("+
-				res[i].idPropietario+")'>Borrar  </a></td>";
+				res[i].idInquilino+")'>Borrar  </a></td>";
 			h+="</tr>";	
 			tabla.append(h);
 			}
@@ -113,17 +115,15 @@ function buscar(){
 
 function evento(id){
 
-	var url="propietario/"+id;
+	var url="inquilino/"+id;
 //HAcemos una llamada ajax usando el metodo get
 //Le pasamos la url y la funcion que se ejecuta cuando nos 
 //devuelve la informacion
 	$.get(url,function(res){
 
 		var resultado="<ul>";
-		resultado+="<li>"+res.nombre+"</li>";
-		resultado+="<li>"+res.dni+"</li>";
-		resultado+="<li>"+res.inmueble.direccion+"</li>";
-		resultado+="<li>"+res.inquilino.nombre+"</li></ul>";
+		resultado+="<li>"+res.direccion+"</li>";
+		resultado+="<li>"+res.precio"+</li></ul>";
 	
 		$("#divDetalle").html(resultado);
 

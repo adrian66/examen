@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.adr.inmo.modelo.Propietario;
-import com.adr.inmo.modelo.viewforms.PropietarioView;
+import com.adr.inmo.modelo.Inquilino;
+import com.adr.inmo.modelo.viewforms.InquilinoView;
 import com.adr.inmo.repositorio.RepositorioInmueble;
-import com.adr.inmo.repositorio.RepositorioPropietario;
+import com.adr.inmo.repositorio.RepositorioInquilino;
 
 @Controller
-@RequestMapping(value="modificarPropietario.html")
+@RequestMapping(value="modificarInquilino.html")
 
-public class ModificarPropietarioController {
+public class ModificarInquilinoController {
 	
 	@Autowired
-	RepositorioPropietario daoP;
+	RepositorioInquilino daoQ;
 	@Autowired
 	RepositorioInmueble daoC;
 	// es igual esta linea request a la que le sigue con la difernrecia del URL
@@ -34,9 +34,9 @@ public class ModificarPropietarioController {
 	
 	public String modificar(ModelMap modelo, @PathVariable int id){
 		
-		Propietario p=daoP.get(Propietario.class, id);
-		PropietarioView ev=new PropietarioView();
-		ev.fromPropietario(p);
+		Inquilino p=daoQ.get(Inquilino.class, id);
+		InquilinoView ev=new InquilinoView();
+		ev.fromInquilino(p);
 		
 		modelo.addAttribute("propietario",ev);
 		Map<Integer, String> in=daoC.getMapaOptions();
@@ -46,7 +46,7 @@ public class ModificarPropietarioController {
 	}
 	// igual que en el GET lo del RequestMappring
 	@RequestMapping(value="/{id}",method=RequestMethod.POST)
-	public String doModificar(@ModelAttribute("propetario") PropietarioView p,
+	public String doModificar(@ModelAttribute("propetario") InquilinoView p,
 			BindingResult result,
 				HttpServletRequest req){
 		
@@ -57,9 +57,8 @@ public class ModificarPropietarioController {
 			return "modificar";
 		}
 		
-		daoP.update(p.getPropietario());
-		return "redirect:/listadoPro.html";
-	}
+		daoQ.update(p.getInquilino());
+		return "redirect:/listadoInq.html";	}
 	
 	
 

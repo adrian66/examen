@@ -1,6 +1,9 @@
 package com.adr.inmo.repositorio;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Hibernate;
@@ -11,16 +14,24 @@ import com.adr.inmo.modelo.Propietario;
 
 public class RepositorioPropietario extends Repositorio<Propietario> {
  
-	@Override
-	public Propietario get(Class<Propietario> tipo, int id) {
-		// TODO Auto-generated method stub
-		Propietario e= super.get(tipo, id);
+	//@Override
+    //	public Propietario get(Class<Propietario> tipo, int id) {
+	//	Propietario e= super.get(tipo, id);
+	
+		public Map<Integer, String> getMapaOptions(){
+		List<Propietario> l=get(Propietario.class);
+		Map<Integer, String> mapa=new HashMap<Integer, String>();
+		for (Propietario propietario : l) {
+			
+			mapa.put(propietario.getIdPropietario(), propietario.getNombre());
+		}
 		
 	
-		Hibernate.initialize(e.getInmuebles());
+	//	Hibernate.initialize(e.getInmuebles());
 		
-		
-		return e;
+				
+	//	return e;
+		return mapa;
 	}
 }
 

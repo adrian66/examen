@@ -13,7 +13,7 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 
 <b><ins><FONT SIZE=5>
  propietario: </font></ins></b> 
- 			 <input type="button" id="btnAlta" value="alta  " onclick="buscar()">
+ 			 <input type="button" id="btnAlta" value="alta  " onclick="alta()">
   			 <input type="button" id="btnBaja" value="borrar  " onclick="borrar()">
   			 <input type="button" id="btnModificar" value="modificar " onclick="buscar()">
   			 <input type="button" id="btnListado" value="listado " onclick="buscar()">

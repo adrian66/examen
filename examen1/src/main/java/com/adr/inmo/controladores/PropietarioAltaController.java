@@ -50,7 +50,7 @@ public class PropietarioAltaController {
 		}
 		
 		daoP.add(p.getPropietario());
-		return "redirect:/listadoPropietario.html";
+		return "redirect:/listadoPro.html";
 	}
 	
 	

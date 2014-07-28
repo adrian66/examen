@@ -9,14 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1	 align="center"><b><ins><FONT SIZE=7> Datos de INMUEBLE </font></ins></b><br> <br>	
+</h1>
 
-	align="center"><b><ins><FONT SIZE=7>Datos del INMUEBLE </font></ins></b><br />
 	<form:form method="post" commandName="inmueble">
 		Dirección:<form:input path="direccion"/><br />
 		Precio  :<form:input path="precio"/><br />
-		
-		
-	
+		Propietario:<form:select path="idPropietario">
+	    	<form:options items="${propietarios}"/>
+		</form:select><br/>	
+		Inquilino :<form:select path="idInquilino">
+			<form:options items="${inquilinos}"/> 
+        </form:select><br/>	
 		<br />
 	<input type="submit" value="dar de alta" />
 	

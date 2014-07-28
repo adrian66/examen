@@ -25,19 +25,19 @@ Buscar:<input type="text" id="txtBuscar"
 				placeholder="Pon tu busqueda">
 	   <input type="button" id="btnBuscar" value="buscar" onclick="buscar()"> 
 <table id="tblDatos">
-<c:forEach items="${propietarios }" var="propietario">
+<c:forEach items="${inmuebles }" var="propietario">
 	<tr>
-		<td>${propietario.nombre }</td>
-		<td>${propietario.dni }</td>
-		<td><a href="detalle.html?id=${propietario.idPropietario}">
+		<td>${inmueble.direccion }</td>
+		<td>${inmueble.precio }</td>
+		<td><a href="detalle.html?id=${inmueble.idInmueble}">
 				Ver detalle
 			</a>
 			<a href="#" id="lnkDetalle" 
-					onclick="evento(${propietario.idPropietario})">
+					onclick="evento(${inmueble.idInmueble})">
 				Detalle Ajax
 			</a>
 			<a href="#" id="lnkBorrar" 
-			onclick="borrar(${propietario.idPropietario})">Borrar</a>
+			onclick="borrar(${inmueble.idInmueble)">Borrar</a>
 		</td>
 	</tr>
 
@@ -55,12 +55,12 @@ function borrar(id){
 	var datosPasar=JSON.stringify(datos);
 
 	$.ajax(
-			"propietario",{
+			"inmueble",{
 				data:datosPasar,
 				method: "DELETE",
 				contentType: "application/json",
 				success: function(res){
-					alert("Propietario borrado correctamente");
+					alert("Inmueble borrado correctamente");
 					$("#txtBuscar").text("");
 					buscar();
 
@@ -79,7 +79,7 @@ function buscar(){
 	var tx=$("#txtBuscar").val();
 	if(tx=="")
 		tx="SinBusqueda";
-	var url="propietario/buscar/"+tx;	
+	var url="inmueble/buscar/"+tx;	
 
 	$.get(url,function(res){
 
@@ -92,14 +92,14 @@ function buscar(){
 
 		for(var i=0;i<res.length;i++){
 			var h="<tr>";
-			h+="<td>"+res[i].nombre+"</td>";
-			h+="<td>"+res[i].dni+"</td>";
+			h+="<td>"+res[i].direccion+"</td>";
+			h+="<td>"+res[i].precio+"</td>";
 			h+="<td><a href='detalle_"+
-					res[i].idPropietario+".html'>Detalle  </a> ";
+					res[i].idInmueble+".html'>Detalle  </a> ";
 			h+="<a href='#' onclick='evento("+
-				res[i].idPropietario+")'>Detalle ajax  </a> ";
+				res[i].idInmueble+")'>Detalle ajax  </a> ";
 			h+="<a href='#' onclick='borrar("+
-				res[i].idPropietario+")'>Borrar  </a></td>";
+				res[i].idInmueble+")'>Borrar  </a></td>";
 			h+="</tr>";	
 			tabla.append(h);
 			}

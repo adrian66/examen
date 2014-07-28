@@ -10,9 +10,6 @@
 Nombre: ${propietario.nombre}<br />
 DNI   : ${propietario.dni}<br />
 
-<!-- Direccion Inmueble: ${propietario.inmueble.direccion}<br /> -->  
-<!--  Inquilino: ${Propietario.inquilino.nombre}<br />   -->
-<!--  Departamento: ${propietario.departamento.nombre}<br />   -->
 
 </body>
 </html>

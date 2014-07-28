@@ -23,14 +23,14 @@ public class PropietarioController {
 	RepositorioPropietario daoPropietario;
 	
 	
-	@RequestMapping(value="/listado.html")
+	@RequestMapping(value="/listadoPro.html")
 	public String listado(Model modelo){
 		
 		List<Propietario> l=
 				daoPropietario.get(Propietario.class);
 		
 		modelo.addAttribute("propietarios", l);
-		return "listado";
+		return "listadoPro";
 	}
 	@RequestMapping(value="detalle.html",method=RequestMethod.GET)
 	public String detalle(Model modelo,HttpServletRequest request){

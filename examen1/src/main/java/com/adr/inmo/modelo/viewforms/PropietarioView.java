@@ -31,7 +31,7 @@ public class PropietarioView {
 			Propietario tp=new Propietario();
 			tp.setNombre(nombre);
 			tp.setDni(dni);
-	//		tp.setDireccion(direccion);
+	// 		tp.setDireccion(direccion);
 	//		tp.setPrecio(precio);
 			tp.setIdPropietario(idPropietario);
 						

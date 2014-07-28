@@ -11,12 +11,12 @@
 <!-- 	<a href="listado.html">Ver posibilidades</a> <br>  -->
 
    
- 			 <a href="listadoPro.html"><b><ins><FONT SIZE=5>Propietario</font></ins></b></a> <br> 
+ 			 <a href="pantallaPro.html"><b><ins><FONT SIZE=5>Propietario</font></ins></b></a> <br> 
 
       
- 			 <a href="listadoInq.html"><b><ins><FONT SIZE=5>Inquilino</font></ins></b></a> <br> 
+ 			 <a href="pantallaInq.html"><b><ins><FONT SIZE=5>Inquilino</font></ins></b></a> <br> 
  
       
-			 <a href="listadocasa.html"><b><ins><FONT SIZE=5> Inmueble</font></ins></b></a> <br> 
+			 <a href="pantallaCasa.html"><b><ins><FONT SIZE=5> Inmueble</font></ins></b></a> <br> 
 </body>
 </html>

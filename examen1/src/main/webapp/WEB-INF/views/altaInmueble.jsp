@@ -10,17 +10,13 @@
 </head>
 <body>
 
-	Datos del PROPIETARIO<br />
-	<form:form method="post" commandName="propietario">
-		Nombre:<form:input path="nombre"/><br />
-		DNI  :<form:input path="dni"/><br />
-		Inmueble: <form:select path="idInmueble">
-			<form:options items="${inmnuebles}"/>
-		</form:select>
-		Inquilino: 
-		<form:select path="idInquilino" multiple="true" >
-			<form:options items="${inquilinos}"/>
-		</form:select>
+	align="center"><b><ins><FONT SIZE=7>Datos del INMUEBLE </font></ins></b><br />
+	<form:form method="post" commandName="inmueble">
+		Dirección:<form:input path="direccion"/><br />
+		Precio  :<form:input path="precio"/><br />
+		
+		
+	
 		<br />
 	<input type="submit" value="dar de alta" />
 	

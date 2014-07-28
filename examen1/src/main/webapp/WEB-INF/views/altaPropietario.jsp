@@ -10,18 +10,16 @@
 </head>
 <body>
 
-	<b>Datos del PROPIETARIO></b><br />
+	Datos del PROPIETARIO<br />
 	<form:form method="post" commandName="propietario">
-		<form:hidden path="idPropietario"/>
 		Nombre:<form:input path="nombre"/><br />
-		DNI :<form:input path="dni"/><br />
-		
+		DNI  :<form:input path="dni"/><br />
 		Inmueble: <form:select path="idInmueble">
-			<form:options items="${inmueble}"/>
+			<form:options items="${inmnuebles}"/>
 		</form:select>
-		
+	
 		<br />
-	<input type="submit" value="Guardar cambios" />
+	<input type="submit" value="dar de alta" />
 	
 	</form:form>
 	

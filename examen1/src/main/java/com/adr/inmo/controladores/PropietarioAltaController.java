@@ -18,7 +18,7 @@ import com.adr.inmo.repositorio.RepositorioPropietario;
 
 @Controller
 @RequestMapping(value="altaPropietario.html")
-public class ProductosAltaController {
+public class PropietarioAltaController {
 
 	@Autowired
 	RepositorioPropietario daoP;
@@ -35,7 +35,7 @@ public class ProductosAltaController {
 		Map<Integer, String> in=daoC.getMapaOptions();
 		modelo.addAttribute("inmuebles",in);
 		
-		return "alta";
+		return "altaPropietario";
 	}
 	@RequestMapping(method=RequestMethod.POST)
 	public String doAlta(@ModelAttribute("propietario") PropietarioView p,
@@ -46,11 +46,11 @@ public class ProductosAltaController {
 			
 			Map<Integer, String> in=daoC.getMapaOptions();
 			req.setAttribute("inmuebles",in);
-			return "alta";
+			return "altaPropietario";
 		}
 		
 		daoP.add(p.getPropietario());
-		return "redirect:/listado.html";
+		return "redirect:/listadoPropietario.html";
 	}
 	
 	

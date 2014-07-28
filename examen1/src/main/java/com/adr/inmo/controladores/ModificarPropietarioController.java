@@ -58,7 +58,7 @@ public class ModificarPropietarioController {
 		}
 		
 		daoP.update(p.getPropietario());
-		return "redirect:/listado.html";
+		return "redirect:/listadoPropietario.html";
 	}
 	
 	

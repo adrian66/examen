@@ -10,6 +10,17 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 <title>Insert title here</title>
 </head>
 <body>
+
+<b><ins><FONT SIZE=5> 
+Inmueble      : </font></ins></b>
+			 <input type="button" id="btnAlta" value="alta  " onclick="buscar()">
+  		     <input type="button" id="btnBaja" value="borrar  " onclick="borrar()">	
+  			 <input type="button" id="btnModificar" value="modificar " onclick="buscar()">
+  			 <input type="button" id="btnListado" value="listado " onclick="buscar()">  
+  			  <br />
+
+
+
 Buscar:<input type="text" id="txtBuscar" 
 				placeholder="Pon tu busqueda">
 	   <input type="button" id="btnBuscar" value="buscar" onclick="buscar()"> 

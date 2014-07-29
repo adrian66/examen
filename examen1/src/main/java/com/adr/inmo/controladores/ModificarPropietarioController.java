@@ -18,9 +18,9 @@ import com.adr.inmo.modelo.viewforms.PropietarioView;
 import com.adr.inmo.repositorio.RepositorioInmueble;
 import com.adr.inmo.repositorio.RepositorioPropietario;
 
+
 @Controller
 @RequestMapping(value="modificarPropietario.html")
-
 public class ModificarPropietarioController {
 	
 	@Autowired
@@ -30,23 +30,27 @@ public class ModificarPropietarioController {
 	// es igual esta linea request a la que le sigue con la difernrecia del URL
 	// si se siguiera este metodo habría que elminar el @Request de arriba: @RequestMapping(value="modificarProductos.html")
 	// @RequestMapping(value="/modificarProductos_{id}.html",method=RequestMethod.GET)
-	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	
+	
+	
+	
+	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public String modificar(ModelMap modelo, @PathVariable int id){
 		
 		Propietario p=daoP.get(Propietario.class, id);
 		PropietarioView ev=new PropietarioView();
 		ev.fromPropietario(p);
-		
 		modelo.addAttribute("propietario",ev);
+		
 		Map<Integer, String> in=daoC.getMapaOptions();
 		modelo.addAttribute("inmuebles",in);
+		// aqui el nombre de JSP
 		
-		return "modificar";
+		return "modificarPropietario";
 	}
 	// igual que en el GET lo del RequestMappring
 	@RequestMapping(value="/{id}",method=RequestMethod.POST)
-	public String doModificar(@ModelAttribute("propetario") PropietarioView p,
+	public String domodificar(@ModelAttribute("propetario") PropietarioView p,
 			BindingResult result,
 				HttpServletRequest req){
 		
@@ -54,7 +58,7 @@ public class ModificarPropietarioController {
 			
 			Map<Integer, String> in=daoC.getMapaOptions();
 			req.setAttribute("inmuebles",in);
-			return "modificar";
+			return "modificarPropietario";
 		}
 		
 		daoP.update(p.getPropietario());

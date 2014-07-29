@@ -60,7 +60,7 @@ import com.adr.inmo.repositorio.RepositorioPropietario;
 			}
 			
 			daoInm.add(p.getInmueble());
-			return "redirect:/listadoInm.html";
+			return "redirect:/listadoCasa.html";
 		}
 		
 		

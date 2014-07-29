@@ -16,6 +16,23 @@ public class InmuebleView {
 	    private Integer edad;
 	    private boolean trabaja;
 		
+	    public InmuebleView() {
+		}
+
+		public InmuebleView(Integer idInmueble, Integer idInquilino, Integer idPropietario,
+				String direccion, double precio, Integer dni, String nombre,
+				Integer edad, boolean trabaja) {
+			super();
+			this.idInmueble = idInmueble;
+			this.idInquilino = idInquilino;
+			this.idPropietario = idPropietario;
+			this.direccion = direccion;
+			this.precio = precio;
+			this.dni = dni;
+			this.nombre = nombre;
+			this.edad = edad;
+			this.trabaja = trabaja;
+		}
 	    
 	    public Inmueble getInmueble(){
 			
@@ -43,29 +60,13 @@ public class InmuebleView {
 			
 			setIdInquilino(tp.getInquilino().getIdInquilino());
 			setIdPropietario(tp.getPropietario().getIdPropietario());
-		//	dni=tp.getDni(); 
+	//		dni=tp.getDni(); 
 //			direccion=tp.getDireccion();
 		
 //			idInmueble=tp.getInmueble().getIdInmueble();
 			
 		}
-	    public InmuebleView() {
-		}
-
-		public InmuebleView(Integer idInmueble, Integer idInquilino, Integer idPropietario,
-				String direccion, double precio, Integer dni, String nombre,
-				Integer edad, boolean trabaja) {
-			super();
-			this.idInmueble = idInmueble;
-			this.idInquilino = idInquilino;
-			this.idPropietario = idPropietario;
-			this.direccion = direccion;
-			this.precio = precio;
-			this.dni = dni;
-			this.nombre = nombre;
-			this.edad = edad;
-			this.trabaja = trabaja;
-		}
+	   
 
 		public Integer getIdInmueble() {
 			return idInmueble;

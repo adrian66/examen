@@ -31,8 +31,7 @@ public class PropietarioView {
 			Propietario tp=new Propietario();
 			tp.setNombre(nombre);
 			tp.setDni(dni);
-	// 		tp.setDireccion(direccion);
-	//		tp.setPrecio(precio);
+	
 			tp.setIdPropietario(idPropietario);
 						
 			Inmueble tc=new Inmueble();
@@ -47,9 +46,6 @@ public class PropietarioView {
 			idPropietario=tp.getIdPropietario();
 			nombre=tp.getNombre();
 			dni=tp.getDni(); 
-	//		direccion=tp.getDireccion();
-		//	precio=tp.getPrecio();
-	//		idInmueble=tp.getInmueble().getIdInmueble();
 			
 		}
 		

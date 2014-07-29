@@ -13,7 +13,7 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 
 <b><ins><FONT SIZE=5> 
 Inmueble      : </font></ins></b>
-			 <input type="button" id="btnAlta" value="alta  " onclick="buscar()">
+			 <input type="button" id="btnAlta" value="alta  " onclick="alta()">
   		     <input type="button" id="btnBaja" value="borrar  " onclick="borrar()">	
   			 <input type="button" id="btnModificar" value="modificar " onclick="buscar()">
   			 <input type="button" id="btnListado" value="listado " onclick="buscar()">  
@@ -25,19 +25,19 @@ Buscar:<input type="text" id="txtBuscar"
 				placeholder="Pon tu busqueda">
 	   <input type="button" id="btnBuscar" value="buscar" onclick="buscar()"> 
 <table id="tblDatos">
-<c:forEach items="${inmuebles }" var="propietario">
+<c:forEach items="${inmuebles }" var="inmueble">
 	<tr>
 		<td>${inmueble.direccion }</td>
 		<td>${inmueble.precio }</td>
-		<td><a href="detalle.html?id=${inmueble.idInmueble}">
+		<td><a href="detalleCasa.html?id=${inmueble.idInmueble}">
 				Ver detalle
 			</a>
-			<a href="#" id="lnkDetalle" 
-					onclick="evento(${inmueble.idInmueble})">
-				Detalle Ajax
+	<!--		<a href="#" id="lnkDetalle"                          --> 
+	<!--				onclick="evento(${inmueble.idInmueble})">    -->
+	<!--			Detalle Ajax                                     -->
 			</a>
 			<a href="#" id="lnkBorrar" 
-			onclick="borrar(${inmueble.idInmueble)">Borrar</a>
+			onclick="borrar(${inmueble.idInmueble})">Borrar</a>
 		</td>
 	</tr>
 
@@ -47,6 +47,9 @@ Buscar:<input type="text" id="txtBuscar"
 
 </div>
 <script type="text/javascript">
+function alta(){
+	location.href="altaInmueble.html";
+}
 
 function borrar(id){
 
@@ -94,20 +97,13 @@ function buscar(){
 			var h="<tr>";
 			h+="<td>"+res[i].direccion+"</td>";
 			h+="<td>"+res[i].precio+"</td>";
-			h+="<td><a href='detalle_"+
-					res[i].idInmueble+".html'>Detalle  </a> ";
-			h+="<a href='#' onclick='evento("+
-				res[i].idInmueble+")'>Detalle ajax  </a> ";
-			h+="<a href='#' onclick='borrar("+
-				res[i].idInmueble+")'>Borrar  </a></td>";
+			h+="<td><a href='detalleCasa_"+res[i].idInmueble+".html'>Detalle  </a> ";
+	  //	h+="<a href='#' onclick='evento("+res[i].idInmueble+")'>Detalle ajax  </a> ";
+			h+="<a href='#' onclick='borrar("+res[i].idInmueble+")'>Borrar  </a></td>";
 			h+="</tr>";	
 			tabla.append(h);
 			}
-
-
-
-		 "<a href='detalle.html?id=22'>Ver detalle</a>"
-
+	
 		});
 	
 }
@@ -115,18 +111,16 @@ function buscar(){
 
 function evento(id){
 
-	var url="propietario/"+id;
+	var url="inmueble/"+id;
 //HAcemos una llamada ajax usando el metodo get
 //Le pasamos la url y la funcion que se ejecuta cuando nos 
 //devuelve la informacion
 	$.get(url,function(res){
 
 		var resultado="<ul>";
-		resultado+="<li>"+res.nombre+"</li>";
-		resultado+="<li>"+res.dni+"</li>";
-		resultado+="<li>"+res.inmueble.direccion+"</li>";
-		resultado+="<li>"+res.inquilino.nombre+"</li></ul>";
-	
+		resultado+="<li>"+res.direccion"</li>";
+		resultado+="<li>"+res.precio"</li>";
+		
 		$("#divDetalle").html(resultado);
 
 		});

@@ -12,10 +12,11 @@ public class InquilinoView {
     private Integer edad;
     private boolean trabaja;
     private double precio;
-	
+    public InquilinoView() {
+	}
+    
    
-
-	public InquilinoView(Integer idInquilino, Integer idInmueble,
+    public InquilinoView(Integer idInquilino, Integer idInmueble,
 			String dni, String nombre, Integer edad, boolean trabaja,
 			double precio) {
 		super();
@@ -27,7 +28,8 @@ public class InquilinoView {
 		this.trabaja = trabaja;
 		this.precio = precio;
 	}
-
+    
+    
 	public Inquilino getInquilino(){
 		
 		Inquilino tp=new Inquilino();
@@ -39,7 +41,7 @@ public class InquilinoView {
 				
 		Inmueble inm=new Inmueble();
 		inm.setIdInmueble(idInmueble);
-		tp.setInmueble(inm);
+//		tp.setInmueble(inm);
 		
 		return tp;
 	}
@@ -51,12 +53,10 @@ public class InquilinoView {
 		edad=tp.getEdad();
 		trabaja=tp.getTrabaja();
 		
-		setIdInmueble(tp.getInmueble().getIdInmueble());
-	
-	public InquilinoView() {
-			}
-		
+//		setIdInmueble(tp.getInmueble().getIdInmueble());
 	}
+	
+		
 	public Integer getidInquilino() {
 		return idInquilino;
 	}

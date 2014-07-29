@@ -8,35 +8,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.adr.inmo.modelo.Propietario;
-import com.adr.inmo.repositorio.RepositorioPropietario;
+import com.adr.inmo.modelo.Inquilino;
+import com.adr.inmo.repositorio.RepositorioInquilino;
 
-public class ListadoPropietarios {
+public class ListadoInquilinos {
 
 	@Autowired
-	RepositorioPropietario dao;
-	@RequestMapping(value="listadoPro.html",method=RequestMethod.GET)
+	RepositorioInquilino dao;
+	@RequestMapping(value="listadoInq.html",method=RequestMethod.GET)
 	public String listado(Model modelo) {
 		
-		List<Propietario> propietarios=dao.get(Propietario.class);
-		modelo.addAttribute("propietarios", propietarios);
+		List<Inquilino> inquilinos=dao.get(Inquilino.class);
+		modelo.addAttribute("inquilinos", inquilinos);
 		
 		return "listadoPro";
 			
 	}
-	@RequestMapping(value="/detallePro_{id}.html")
+	@RequestMapping(value="/detalleInq_{id}.html")
 	public String detalle(Model modelo,@PathVariable int id){
 		
-		Propietario tp=dao.get(Propietario.class,id);
+		Inquilino tp=dao.get(Inquilino.class,id);
 		
-		modelo.addAttribute("propietario", tp);
+		modelo.addAttribute("inquilino", tp);
 		return "detalle";
 		
 	}
 }
 
-
-
-
-	
 

@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.adr.inmo.modelo.Inquilino;
-import com.adr.inmo.modelo.viewforms.InquilinoView;
+import com.adr.inmo.modelo.Inmueble;
+import com.adr.inmo.modelo.viewforms.InmuebleView;
 import com.adr.inmo.repositorio.RepositorioInmueble;
 import com.adr.inmo.repositorio.RepositorioInquilino;
 
 @Controller
-@RequestMapping(value="modificarInquilino.html")
+@RequestMapping(value="modificarInmueble.html")
 
-public class ModificarInquilinoController {
+public class ModificarInmuebleController {
 	
 	@Autowired
-	RepositorioInquilino daoQ;
-	@Autowired
 	RepositorioInmueble daoC;
+	@Autowired
+	RepositorioInquilino daoI;
 	// es igual esta linea request a la que le sigue con la difernrecia del URL
 	// si se siguiera este metodo habría que elminar el @Request de arriba: @RequestMapping(value="modificarProductos.html")
 	// @RequestMapping(value="/modificarProductos_{id}.html",method=RequestMethod.GET)
@@ -34,30 +34,31 @@ public class ModificarInquilinoController {
 	
 	public String modificar(ModelMap modelo, @PathVariable int id){
 		
-		Inquilino p=daoQ.get(Inquilino.class, id);
-		InquilinoView ev=new InquilinoView();
-		ev.fromInquilino(p);
+		Inmueble p=daoC.get(Inmueble.class, id);
+		InmuebleView ev=new InmuebleView();
+		ev.fromInmueble(p);
 		
-		modelo.addAttribute("inquilino",ev);
-		Map<Integer, String> in=daoC.getMapaOptions();
-		modelo.addAttribute("inmuebles",in);
+		modelo.addAttribute("inmueble",ev);
+		Map<Integer, String> in=daoI.getMapaOptions();
+		modelo.addAttribute("inquilinos",in);
 		
-		return "modificarInquilino";
+		return "modificarCasa";
 	}
 	// igual que en el GET lo del RequestMappring
 	@RequestMapping(value="/{id}",method=RequestMethod.POST)
-	public String doModificar(@ModelAttribute("inquilino") InquilinoView p,
-			BindingResult result, HttpServletRequest req){
+	public String doModificar(@ModelAttribute("inmueble") InmuebleView p,
+			BindingResult result,
+				HttpServletRequest req){
 		
 		if(result.hasErrors()){
 			
 			Map<Integer, String> in=daoC.getMapaOptions();
 			req.setAttribute("inmuebles",in);
-			return "modificarInquilino";
+			return "modificarCasa";
 		}
 		
-		daoQ.update(p.getInquilino());
-		return "redirect:/listadoInq.html";	}
+		daoC.update(p.getInmueble());
+		return "redirect:/listadoCasa.html";	}
 	
 	
 

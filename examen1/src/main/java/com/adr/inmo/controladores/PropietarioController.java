@@ -32,7 +32,7 @@ public class PropietarioController {
 		modelo.addAttribute("propietarios", l);
 		return "listadoPro";
 	}
-	@RequestMapping(value="detalle.html",method=RequestMethod.GET)
+	@RequestMapping(value="detallePro.html",method=RequestMethod.GET)
 	public String detalle(Model modelo,HttpServletRequest request){
 		
 		int id=Integer.parseInt(request.getParameter("id"));
@@ -42,8 +42,8 @@ public class PropietarioController {
 		
 		
 		modelo.addAttribute("propietario", e);
-		
-		return "detalle";
+		// aqui el nombre del JSP
+		return "detallePro";
 	}
 	
 	

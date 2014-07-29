@@ -10,17 +10,21 @@
 </head>
 <body>
 
-<h1	 align="center"><b><ins><FONT SIZE=7>	Datos del PROPIETARIO </font></ins></b><br> 
-</h1>
-	<form:form method="post" commandName="propietario">
+	<b>Datos de Inquilino></b><br />
+	<form:form method="post" commandName="inquilino">
+		<form:hidden path="idInquilino"/>
 		Nombre:<form:input path="nombre"/><br />
-		DNI  :<form:input path="dni"/><br />
+		DNI :<form:input path="dni"/><br />
+		Edad:<form:input path="edad"/><br />
+		Trabaja :<form:input path="trabaja"/><br />
+		
+		
 		Inmueble: <form:select path="idInmueble">
-			<form:options items="${inmuebles}"/>
+			<form:options items="${inmueble}"/>
 		</form:select>
-	
+		
 		<br />
-	<input type="submit" value="dar de alta" />
+	<input type="submit" value="Guardar cambios" />
 	
 	</form:form>
 	

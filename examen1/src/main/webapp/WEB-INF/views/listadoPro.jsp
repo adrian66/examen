@@ -13,8 +13,9 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 
 <b><ins><FONT SIZE=5>
  propietario: </font></ins></b> 
- 			 <input type="button" id="btnAlta" value="alta  " onclick="alta()">
-  			 <input type="button" id="btnBaja" value="borrar  " onclick="borrar()">
+
+ 			 <input type="button" id="btnAlta" value="alta " onclick="alta()">
+ 	<!--  		 <input type="button" id="btnAlta" value="alta  " onclick="alta()">  -->
   			 <input type="button" id="btnModificar" value="modificar " onclick="buscar()">
   			 <input type="button" id="btnListado" value="listado " onclick="buscar()">
   			 <br />
@@ -28,12 +29,12 @@ Buscar:<input type="text" id="txtBuscar"
 	<tr>
 		<td>${propietario.nombre }</td>
 		<td>${propietario.dni }</td>
-		<td><a href="detalle.html?id=${propietario.idPropietario}">
+		<td><a href="detallePro.html?id=${propietario.idPropietario}">
 				Ver detalle
 			</a>
-			<a href="#" id="lnkDetalle" 
-					onclick="evento(${propietario.idPropietario})">
-				Detalle Ajax
+	<!-- 		<a href="#" id="lnkDetalle"                                 --> 
+	<!-- 				onclick="evento(${propietario.idPropietario})">     -->
+	<!-- 			Detalle Ajax                                            -->
 			</a>
 			<a href="#" id="lnkBorrar" 
 			onclick="borrar(${propietario.idPropietario})">Borrar</a>
@@ -46,6 +47,10 @@ Buscar:<input type="text" id="txtBuscar"
 
 </div>
 <script type="text/javascript">
+function alta(){
+	location.href="altaPropietario.html";
+}
+
 
 function borrar(id){
 
@@ -93,20 +98,13 @@ function buscar(){
 			var h="<tr>";
 			h+="<td>"+res[i].nombre+"</td>";
 			h+="<td>"+res[i].dni+"</td>";
-			h+="<td><a href='detalle_"+
-					res[i].idPropietario+".html'>Detalle  </a> ";
-			h+="<a href='#' onclick='evento("+
-				res[i].idPropietario+")'>Detalle ajax  </a> ";
-			h+="<a href='#' onclick='borrar("+
-				res[i].idPropietario+")'>Borrar  </a></td>";
+			h+="<td><a href='detalle_"+res[i].idPropietario+".html'>Detalle  </a> ";
+			h+="<a href='#' onclick='evento("+res[i].idPropietario+")'>Detalle ajax  </a> ";
+			h+="<a href='#' onclick='borrar("+res[i].idPropietario+")'>Borrar  </a></td>";
 			h+="</tr>";	
 			tabla.append(h);
 			}
-
-
-
-		 "<a href='detalle.html?id=22'>Ver detalle</a>"
-
+	
 		});
 	
 }

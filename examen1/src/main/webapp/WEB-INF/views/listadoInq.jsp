@@ -10,9 +10,10 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 <title>Insert title here</title>
 </head>
 <body>
+
 <b><ins><FONT SIZE=5>
  Inquilino    : </font></ins></b> 
- 			 <input type="button" id="btnAlta" value="alta  " onclick="buscar()">
+ 			 <input type="button" id="btnAlta" value="alta  " onclick="alta()">
   			 <input type="button" id="btnBaja" value="borrar  " onclick="borrar()">
   			 <input type="button" id="btnModificar" value="modificar " onclick="buscar()">
   			 <input type="button" id="btnListado" value="listado " onclick="buscar()"> 
@@ -23,18 +24,18 @@ Buscar:<input type="text" id="txtBuscar"
 				placeholder="Pon tu busqueda">
 	   <input type="button" id="btnBuscar" value="buscar" onclick="buscar()"> 
 <table id="tblDatos">
-<c:forEach items="${inquilinos }" var="propietario">
+<c:forEach items="${inquilinos }" var="inquilino">
 	<tr>
 		<td>${inquilino.nombre }</td>
 		<td>${inquilino.dni }</td>
 		<td>${inquilino.edad }</td>
 		<td>${inquilino.trabaja }</td>
-		<td><a href="detalle.html?id=${inquilino.idInquilino}">
+		<td><a href="detalleInq.html?id=${inquilino.idInquilino}">
 				Ver detalle
 			</a>
-			<a href="#" id="lnkDetalle" 
-					onclick="evento(${inquilino.idInquilino})">
-				Detalle Ajax
+	<!-- 		<a href="#" id="lnkDetalle"       --> 
+	<!--				onclick="evento(${inquilino.idInquilino})">   -->
+	<!--			Detalle Ajax                                      -->
 			</a>
 			<a href="#" id="lnkBorrar" 
 			onclick="borrar(${inquilino.idInquilino})">Borrar</a>
@@ -47,6 +48,11 @@ Buscar:<input type="text" id="txtBuscar"
 
 </div>
 <script type="text/javascript">
+
+function alta(){
+	location.href="altaInquilino.html";
+}
+
 
 function borrar(id){
 
@@ -94,20 +100,15 @@ function buscar(){
 			var h="<tr>";
 			h+="<td>"+res[i].nombre+"</td>";
 			h+="<td>"+res[i].dni+"</td>";
-			h+="<td><a href='detalle_"+
-					res[i].idInquilino+".html'>Detalle  </a> ";
-			h+="<a href='#' onclick='evento("+
-				res[i].idInquilino+")'>Detalle ajax  </a> ";
-			h+="<a href='#' onclick='borrar("+
-				res[i].idInquilino+")'>Borrar  </a></td>";
+			h+="<td>"+res[i].edad+"</td>";
+			h+="<td>"+res[i].trabaja+"</td>";
+			h+="<td><a href='detalleInq_"+res[i].idInquilino+".html'>Detalle  </a> ";
+	//		h+="<a href='#' onclick='evento("+res[i].idInquilino+")'>Detalle ajax  </a> ";
+			h+="<a href='#' onclick='borrar("+res[i].idInquilino+")'>Borrar  </a></td>";
 			h+="</tr>";	
 			tabla.append(h);
 			}
-
-
-
-		 "<a href='detalle.html?id=22'>Ver detalle</a>"
-
+		
 		});
 	
 }
@@ -122,9 +123,10 @@ function evento(id){
 	$.get(url,function(res){
 
 		var resultado="<ul>";
-		resultado+="<li>"+res.direccion+"</li>";
-		resultado+="<li>"+res.precio"+</li></ul>";
-	
+		resultado+="<td>"+res[i].nombre+"</td>";
+		resultado+="<td>"+res[i].dni+"</td>";
+		resultado+="<td>"+res[i].edad+"</td>";
+		resultado+="<td>"+res[i].trabaja+"</td>";
 		$("#divDetalle").html(resultado);
 
 		});

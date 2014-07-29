@@ -1,9 +1,7 @@
 package com.adr.inmo.modelo.viewforms;
 
-
 import com.adr.inmo.modelo.Inmueble;
 import com.adr.inmo.modelo.Inquilino;
-import com.adr.inmo.modelo.Propietario;
 
 public class InquilinoView {
 
@@ -15,8 +13,7 @@ public class InquilinoView {
     private boolean trabaja;
     private double precio;
 	
-    public InquilinoView() {
-	}
+   
 
 	public InquilinoView(Integer idInquilino, Integer idInmueble,
 			String dni, String nombre, Integer edad, boolean trabaja,
@@ -34,16 +31,15 @@ public class InquilinoView {
 	public Inquilino getInquilino(){
 		
 		Inquilino tp=new Inquilino();
+		tp.setIdInquilino(idInquilino);
 		tp.setNombre(nombre);
 		tp.setDni(dni);
- 		tp.setEdad(edad);
+		tp.setEdad(edad);
 		tp.setTrabaja(trabaja);
-		tp.setIdInquilino(idInquilino);
-					
-		Inmueble tc=new Inmueble();
-		tc.setIdInmueble(idInmueble);
-		
-	//	tp.setInquilino(tc);
+				
+		Inmueble inm=new Inmueble();
+		inm.setIdInmueble(idInmueble);
+		tp.setInmueble(inm);
 		
 		return tp;
 	}
@@ -52,9 +48,13 @@ public class InquilinoView {
 		idInquilino=tp.getIdInquilino();
 		nombre=tp.getNombre();
 		dni=tp.getDni(); 
-//		direccion=tp.getDireccion();
-	//	precio=tp.getPrecio();
-//		idInmueble=tp.getInmueble().getIdInmueble();
+		edad=tp.getEdad();
+		trabaja=tp.getTrabaja();
+		
+		setIdInmueble(tp.getInmueble().getIdInmueble());
+	
+	public InquilinoView() {
+			}
 		
 	}
 	public Integer getidInquilino() {
@@ -112,7 +112,19 @@ public class InquilinoView {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-	  
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public Integer getIdInquilino() {
+		return idInquilino;
+	}
+	   
 	 
 	
 }

@@ -35,7 +35,7 @@ public class InquilinoRestController {
 	public @ResponseBody List<Inquilino> 
 				buscar(@PathVariable String texto){
 	
-		if(texto.equals("Sinbusqueda"))
+		if(texto.equals("SinBusqueda"))
 			texto="";
 		
 		Map<String, Object> params=new HashMap();

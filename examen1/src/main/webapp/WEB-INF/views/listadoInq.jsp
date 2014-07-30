@@ -10,19 +10,16 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 <title>Insert title here</title>
 </head>
 <body>
-
-<b><ins><FONT SIZE=5>
- Inquilino    : </font></ins></b> 
+<h1	 align="center"><b><ins><FONT SIZE=7> INQUILINO </font></ins></b>
+	<br>
+</h1>		
  			 <input type="button" id="btnAlta" value="alta  " onclick="alta()">
-  			 <input type="button" id="btnModif" value="modificar  " onclick="modifi()">
-  			 
-  			 <input type="button" id="btnListado" value="listado " onclick="buscar()"> 
+  			 <input type="button" id="btnListado" value="listado " onclick="evento()"> 
   			 <br />
-  			 
-  			 
-Buscar:<input type="text" id="txtBuscar" 
+ 			   			 
+<!-- Buscar:<input type="text" id="txtBuscar" 
 				placeholder="Pon tu busqueda">
-	   <input type="button" id="btnBuscar" value="buscar" onclick="buscar()"> 
+	   <input type="button" id="btnBuscar" value="buscar" onclick="buscar()">     --> 
 <table id="tblDatos">
 <c:forEach items="${inquilinos }" var="inquilino">
 	<tr>
@@ -37,7 +34,7 @@ Buscar:<input type="text" id="txtBuscar"
 	<!--				onclick="evento(${inquilino.idInquilino})">   -->
 	<!--			Detalle Ajax                                      -->
 	<!--		</a>                        -->
-			<a href="modificarInquilino.html?id=${inquilino.idInquilino}">
+			<a href="modificarInquilino.html/${inquilino.idInquilino}">
 			Modificar
 			</a>
 			<a href="#" id="lnkBorrar" 
@@ -55,10 +52,7 @@ Buscar:<input type="text" id="txtBuscar"
 function alta(){
 	location.href="altaInquilino.html";
 }
-function modifi(id){
-	location.href="/modificarInquilino.html/(idInquilino)";
 
-}
 
 function borrar(id){
 
@@ -72,7 +66,7 @@ function borrar(id){
 				method: "DELETE",
 				contentType: "application/json",
 				success: function(res){
-					alert("Propietario borrado correctamente");
+					alert("Inquilino borrado correctamente");
 					$("#txtBuscar").text("");
 					buscar();
 
@@ -88,9 +82,11 @@ function borrar(id){
 
 
 function buscar(){
-	var tx=$("#txtBuscar").val();
-	if(tx=="")
-		tx="SinBusqueda";
+	// var tx=$("#txtBuscar").val();
+	// if(tx=="")
+	//	tx="SinBusqueda";
+	
+	var tx="SinBusqueda";
 	var url="inquilino/buscar/"+tx;	
 
 	$.get(url,function(res){

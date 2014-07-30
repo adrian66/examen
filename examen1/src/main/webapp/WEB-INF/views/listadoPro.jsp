@@ -10,21 +10,19 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 <title>Insert title here</title>
 </head>
 <body>
-
-<b><ins><FONT SIZE=5>
- propietario: </font></ins></b> 
-
+<h1	 align="center"><b><ins><FONT SIZE=7> PROPIETARIO </font></ins></b>
+	<br>
+	
+</h1>		
  			 <input type="button" id="btnAlta" value="alta " onclick="alta()">
- 	<!--  		 <input type="button" id="btnAlta" value="alta  " onclick="alta()">  -->
-  			 <input type="button" id="btnModificar" value="modificar " onclick="modifi()">
-  			 <input type="button" id="btnListado" value="listado " onclick="buscar()">
+ 			 <input type="button" id="btnListado" value="listado " onclick="evento()">
+  			 <br />
   			 <br />
   			 
-  			 
-Buscar:<input type="text" id="txtBuscar" 
+<!--Buscar:  <input type="text" id="txtBuscar" 
 				placeholder="Pon tu busqueda">
-	   <input type="button" id="btnBuscar" value="buscar" onclick="buscar()"> 
-<table id="tblDatos">
+	   <input type="button" id="btnBuscar" value="buscar" onclick="buscar()">  --> 
+<table id="tblDatos">  
 <c:forEach items="${propietarios }" var="propietario">
 	<tr>
 		<td>${propietario.nombre }</td>
@@ -35,7 +33,10 @@ Buscar:<input type="text" id="txtBuscar"
 	<!-- 		<a href="#" id="lnkDetalle"                                 --> 
 	<!-- 				onclick="evento(${propietario.idPropietario})">     -->
 	<!-- 			Detalle Ajax                                            -->
-	<!--	</a>                                                             -->
+	<!--	</a>   -->
+			<a href="modificarPropietario.html/${propietario.idPropietario}">
+			Modificar
+			</a>                                                          
 			<a href="#" id="lnkBorrar" 
 			onclick="borrar(${propietario.idPropietario})">Borrar</a>
 		</td>
@@ -50,9 +51,7 @@ Buscar:<input type="text" id="txtBuscar"
 function alta(){
 	location.href="altaPropietario.html";
 }
-function modifi(){
-	location.href="modificarPropietario.html";
-}
+
 
 function borrar(id){
 
@@ -67,7 +66,7 @@ function borrar(id){
 				contentType: "application/json",
 				success: function(res){
 					alert("Propietario borrado correctamente");
-					$("#txtBuscar").text("");
+				/*	$("#txtBuscar").text("");    */
 					buscar();
 
 					},
@@ -75,15 +74,13 @@ function borrar(id){
 					alert(JSON.stringify(res));
 					}
 
-
 				}
 			);
 }
 
 function buscar(){
-	var tx=$("#txtBuscar").val();
-	if(tx=="")
-		tx="SinBusqueda";
+		
+	var tx="SinBusqueda";
 	var url="propietario/buscar/"+tx;	
 
 	$.get(url,function(res){

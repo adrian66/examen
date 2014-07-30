@@ -33,7 +33,7 @@ public class CasaRestController {
 	public @ResponseBody List<Inmueble> 
 				buscar(@PathVariable String texto){
 	
-		if(texto.equals("Sinbusqueda"))
+		if(texto.equals("SinBusqueda"))
 			texto="";
 		
 		Map<String, Object> params=new HashMap();

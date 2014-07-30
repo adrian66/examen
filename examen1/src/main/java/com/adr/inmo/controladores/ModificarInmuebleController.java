@@ -19,7 +19,7 @@ import com.adr.inmo.repositorio.RepositorioInmueble;
 import com.adr.inmo.repositorio.RepositorioInquilino;
 
 @Controller
-@RequestMapping(value="modificarCasa_(ID).html")
+@RequestMapping(value="modificarCasa.html")
 
 public class ModificarInmuebleController {
 	
@@ -58,7 +58,8 @@ public class ModificarInmuebleController {
 		}
 		
 		daoC.update(p.getInmueble());
-		return "redirect:/listadoCasa.html";	}
+		return "redirect:/listadoCasa.html";
+		}
 	
 	
 

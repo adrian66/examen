@@ -10,20 +10,19 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 <title>Insert title here</title>
 </head>
 <body>
+<h1	 align="center"><b><ins><FONT SIZE=7> INMUEBLE </font></ins></b>
+	<br>
+</h1>		
 
-<b><ins><FONT SIZE=5> 
-Inmueble      : </font></ins></b>
 			 <input type="button" id="btnAlta" value="alta  " onclick="alta()">
-  		     <input type="button" id="btnBaja" value="borrar  " onclick="borrar()">	
-  			 <input type="button" id="btnModificar" value="modificar " onclick="modifi()">
-  			 <input type="button" id="btnListado" value="listado " onclick="buscar()">  
+  		     <input type="button" id="btnListado" value="listado " onclick="evento()">  
   			  <br />
 
 
 
-Buscar:<input type="text" id="txtBuscar" 
-				placeholder="Pon tu busqueda">
-	   <input type="button" id="btnBuscar" value="buscar" onclick="buscar()"> 
+Buscar:<input type="text" id="txtBuscar" placeholder="Pon tu busqueda">
+	   <input type="button" id="btnBuscard" value="buscar direccion" onclick="buscard()"> 
+	   <input type="button" id="btnBuscarp" value="buscar precio" onclick="buscarp()"> 
 <table id="tblDatos">
 <c:forEach items="${inmuebles }" var="inmueble">
 	<tr>
@@ -35,6 +34,9 @@ Buscar:<input type="text" id="txtBuscar"
 	<!--		<a href="#" id="lnkDetalle"                          --> 
 	<!--				onclick="evento(${inmueble.idInmueble})">    -->
 	<!--			Detalle Ajax                                     -->
+	<!-- 		</a>      -->
+			<a href="modificarCasa.html/${inmueble.idInmueble}">
+			Modificar
 			</a>
 			<a href="#" id="lnkBorrar" 
 			onclick="borrar(${inmueble.idInmueble})">Borrar</a>
@@ -50,13 +52,10 @@ Buscar:<input type="text" id="txtBuscar"
 function alta(){
 	location.href="altaInmueble.html";
 }
-function modifi(){
-	location.href="modificarCasa.html";
-}
 
 function borrar(id){
 
-	var datos={idPropietario:id};
+	var datos={idInmueble:id};
 
 	var datosPasar=JSON.stringify(datos);
 
@@ -74,14 +73,11 @@ function borrar(id){
 				error: function(res){
 					alert(JSON.stringify(res));
 					}
-
-
 				}
 			);
 }
 
-
-function buscar(){
+function buscard(){
 	var tx=$("#txtBuscar").val();
 	if(tx=="")
 		tx="SinBusqueda";
@@ -111,6 +107,35 @@ function buscar(){
 	
 }
 
+function buscarp(){
+	var tx=$("#txtBuscar").val();
+	if(tx=="")
+		tx="SinBusqueda";
+	var url="inmueble/buscar/"+tx;	
+
+	$.get(url,function(res){
+
+		var tabla=$("#tblDatos");
+
+		$("#tblDatos tr").each(function(){
+				$(this).remove();
+
+			});
+
+		for(var i=0;i<res.length;i++){
+			var h="<tr>";
+			h+="<td>"+res[i].precio+"</td>";
+			h+="<td>"+res[i].direccion+"</td>";
+			h+="<td><a href='detalleCasa_"+res[i].idInmueble+".html'>Detalle  </a> ";
+	  //	h+="<a href='#' onclick='evento("+res[i].idInmueble+")'>Detalle ajax  </a> ";
+			h+="<a href='#' onclick='borrar("+res[i].idInmueble+")'>Borrar  </a></td>";
+			h+="</tr>";	
+			tabla.append(h);
+			}
+	
+		});
+	
+}
 
 function evento(id){
 

@@ -29,10 +29,6 @@ public class ModificarPropietarioController {
 	// es igual esta linea request a la que le sigue con la difernrecia del URL
 	// si se siguiera este metodo habría que elminar el @Request de arriba: @RequestMapping(value="modificarProductos.html")
 	// @RequestMapping(value="/modificarProductos_{id}.html",method=RequestMethod.GET)
-	
-	
-	
-	
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public String modificar(ModelMap modelo, @PathVariable int id){
 		

@@ -12,6 +12,7 @@ public class PropietarioView {
 	     private String dni;
 	     private String direccion;
 	     private double precio;
+	     
 		public PropietarioView() {
 		}
 				
@@ -37,7 +38,7 @@ public class PropietarioView {
 			Inmueble tc=new Inmueble();
 			tc.setIdInmueble(idInmueble);
 			
-	//		tp.setInmueble(tc);
+		//	tp.setInmueble(tc);
 			
 			return tp;
 		}
@@ -48,7 +49,6 @@ public class PropietarioView {
 			dni=tp.getDni(); 
 			
 		}
-		
 		public Integer getIdInmueble() {
 			return idInmueble;
 		}

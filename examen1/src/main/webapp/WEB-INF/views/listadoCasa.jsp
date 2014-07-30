@@ -15,7 +15,7 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 Inmueble      : </font></ins></b>
 			 <input type="button" id="btnAlta" value="alta  " onclick="alta()">
   		     <input type="button" id="btnBaja" value="borrar  " onclick="borrar()">	
-  			 <input type="button" id="btnModificar" value="modificar " onclick="buscar()">
+  			 <input type="button" id="btnModificar" value="modificar " onclick="modifi()">
   			 <input type="button" id="btnListado" value="listado " onclick="buscar()">  
   			  <br />
 
@@ -49,6 +49,9 @@ Buscar:<input type="text" id="txtBuscar"
 <script type="text/javascript">
 function alta(){
 	location.href="altaInmueble.html";
+}
+function modifi(){
+	location.href="modificarCasa.html";
 }
 
 function borrar(id){

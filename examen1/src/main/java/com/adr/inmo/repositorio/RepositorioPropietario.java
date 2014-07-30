@@ -14,9 +14,7 @@ import com.adr.inmo.modelo.Propietario;
 
 public class RepositorioPropietario extends Repositorio<Propietario> {
  
-	//@Override
-    //	public Propietario get(Class<Propietario> tipo, int id) {
-	//	Propietario e= super.get(tipo, id);
+	
 	
 		public Map<Integer, String> getMapaOptions(){
 		List<Propietario> l=get(Propietario.class);
@@ -25,14 +23,17 @@ public class RepositorioPropietario extends Repositorio<Propietario> {
 			
 			mapa.put(propietario.getIdPropietario(), propietario.getNombre());
 		}
-		
-	
-	//	Hibernate.initialize(e.getInmuebles());
+		return mapa;
+		}
+	@Override
+    	public Propietario get(Class<Propietario> tipo, int id) {
+		Propietario e= super.get(tipo, id);
+			Hibernate.initialize(e.getInmuebles());
 		
 				
-	//	return e;
-		return mapa;
+	  	return e;
 	}
+	
 }
 
 

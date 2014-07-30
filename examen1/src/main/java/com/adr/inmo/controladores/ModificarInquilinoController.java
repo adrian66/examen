@@ -19,7 +19,7 @@ import com.adr.inmo.repositorio.RepositorioInmueble;
 import com.adr.inmo.repositorio.RepositorioInquilino;
 
 @Controller
-@RequestMapping(value="modificarInquilino.html")
+@RequestMapping(value="/modificarInquilino.html") 
 
 public class ModificarInquilinoController {
 	
@@ -46,7 +46,7 @@ public class ModificarInquilinoController {
 	}
 	// igual que en el GET lo del RequestMappring
 	@RequestMapping(value="/{id}",method=RequestMethod.POST)
-	public String doModificar(@ModelAttribute("inquilino") InquilinoView p,
+		public String doModificar(@ModelAttribute("inquilino") InquilinoView p,
 			BindingResult result, HttpServletRequest req){
 		
 		if(result.hasErrors()){

@@ -10,8 +10,9 @@
 </head>
 <body>
 
-	<b>Datos del PROPIETARIO></b><br />
-	<form:form method="post" commandName="propietario">
+<h1	 align="center"><b><ins><FONT SIZE=7> Datos de PROPIETARIO </font></ins></b><br> 
+</h1>
+		<form:form method="post" commandName="propietario">
 		<form:hidden path="idPropietario"/>
 		Nombre:<form:input path="nombre"/><br />
 		DNI :<form:input path="dni"/><br />

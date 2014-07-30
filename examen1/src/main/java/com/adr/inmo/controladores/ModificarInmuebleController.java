@@ -19,7 +19,7 @@ import com.adr.inmo.repositorio.RepositorioInmueble;
 import com.adr.inmo.repositorio.RepositorioInquilino;
 
 @Controller
-@RequestMapping(value="modificarInmueble.html")
+@RequestMapping(value="modificarCasa_(ID).html")
 
 public class ModificarInmuebleController {
 	

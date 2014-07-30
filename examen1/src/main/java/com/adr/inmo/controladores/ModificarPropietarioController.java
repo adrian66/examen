@@ -18,7 +18,6 @@ import com.adr.inmo.modelo.viewforms.PropietarioView;
 import com.adr.inmo.repositorio.RepositorioInmueble;
 import com.adr.inmo.repositorio.RepositorioPropietario;
 
-
 @Controller
 @RequestMapping(value="modificarPropietario.html")
 public class ModificarPropietarioController {

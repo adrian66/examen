@@ -14,8 +14,8 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 <b><ins><FONT SIZE=5>
  Inquilino    : </font></ins></b> 
  			 <input type="button" id="btnAlta" value="alta  " onclick="alta()">
-  			 <input type="button" id="btnBaja" value="borrar  " onclick="borrar()">
-  			 <input type="button" id="btnModificar" value="modificar " onclick="buscar()">
+  			 <input type="button" id="btnModif" value="modificar  " onclick="modifi()">
+  			 
   			 <input type="button" id="btnListado" value="listado " onclick="buscar()"> 
   			 <br />
   			 
@@ -36,6 +36,9 @@ Buscar:<input type="text" id="txtBuscar"
 	<!-- 		<a href="#" id="lnkDetalle"       --> 
 	<!--				onclick="evento(${inquilino.idInquilino})">   -->
 	<!--			Detalle Ajax                                      -->
+	<!--		</a>                        -->
+			<a href="modificarInquilino.html?id=${inquilino.idInquilino}">
+			Modificar
 			</a>
 			<a href="#" id="lnkBorrar" 
 			onclick="borrar(${inquilino.idInquilino})">Borrar</a>
@@ -52,7 +55,10 @@ Buscar:<input type="text" id="txtBuscar"
 function alta(){
 	location.href="altaInquilino.html";
 }
+function modifi(id){
+	location.href="/modificarInquilino.html/(idInquilino)";
 
+}
 
 function borrar(id){
 

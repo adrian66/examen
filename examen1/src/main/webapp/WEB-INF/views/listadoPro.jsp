@@ -16,7 +16,7 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 
  			 <input type="button" id="btnAlta" value="alta " onclick="alta()">
  	<!--  		 <input type="button" id="btnAlta" value="alta  " onclick="alta()">  -->
-  			 <input type="button" id="btnModificar" value="modificar " onclick="buscar()">
+  			 <input type="button" id="btnModificar" value="modificar " onclick="modifi()">
   			 <input type="button" id="btnListado" value="listado " onclick="buscar()">
   			 <br />
   			 
@@ -31,11 +31,11 @@ Buscar:<input type="text" id="txtBuscar"
 		<td>${propietario.dni }</td>
 		<td><a href="detallePro.html?id=${propietario.idPropietario}">
 				Ver detalle
-			</a>
+		</a>                                                         
 	<!-- 		<a href="#" id="lnkDetalle"                                 --> 
 	<!-- 				onclick="evento(${propietario.idPropietario})">     -->
 	<!-- 			Detalle Ajax                                            -->
-			</a>
+	<!--	</a>                                                             -->
 			<a href="#" id="lnkBorrar" 
 			onclick="borrar(${propietario.idPropietario})">Borrar</a>
 		</td>
@@ -50,7 +50,9 @@ Buscar:<input type="text" id="txtBuscar"
 function alta(){
 	location.href="altaPropietario.html";
 }
-
+function modifi(){
+	location.href="modificarPropietario.html";
+}
 
 function borrar(id){
 
@@ -78,7 +80,6 @@ function borrar(id){
 			);
 }
 
-
 function buscar(){
 	var tx=$("#txtBuscar").val();
 	if(tx=="")
@@ -99,7 +100,7 @@ function buscar(){
 			h+="<td>"+res[i].nombre+"</td>";
 			h+="<td>"+res[i].dni+"</td>";
 			h+="<td><a href='detalle_"+res[i].idPropietario+".html'>Detalle  </a> ";
-			h+="<a href='#' onclick='evento("+res[i].idPropietario+")'>Detalle ajax  </a> ";
+		//	h+="<a href='#' onclick='evento("+res[i].idPropietario+")'>Detalle ajax  </a> "; 
 			h+="<a href='#' onclick='borrar("+res[i].idPropietario+")'>Borrar  </a></td>";
 			h+="</tr>";	
 			tabla.append(h);

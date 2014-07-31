@@ -14,8 +14,8 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 	<br>
 </h1>		
 
-			 <input type="button" id="btnAlta" value="alta  " onclick="alta()">
-  		     <input type="button" id="btnListado" value="listado " onclick="evento()">  
+			 <input type="button" onclick="alta()" id="btnAlta" value="alta" >
+  	<!--     <input type="button" id="btnListado" value="listado " onclick="evento()">   -->  
   			  <br />
 
 
@@ -146,8 +146,8 @@ function evento(id){
 	$.get(url,function(res){
 
 		var resultado="<ul>";
-		resultado+="<li>"+res.direccion"</li>";
-		resultado+="<li>"+res.precio"</li>";
+		resultado+="<li>"+res.direccion+"</li>";
+		resultado+="<li>"+res.precio+"</li>";
 		
 		$("#divDetalle").html(resultado);
 

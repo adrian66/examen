@@ -14,7 +14,7 @@ src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 	<br>
 </h1>		
  			 <input type="button" id="btnAlta" value="alta  " onclick="alta()">
-  			 <input type="button" id="btnListado" value="listado " onclick="evento()"> 
+  	<!--	 <input type="button" id="btnListado" value="listado " onclick="evento()">  --> 
   			 <br />
  			   			 
 <!-- Buscar:<input type="text" id="txtBuscar" 

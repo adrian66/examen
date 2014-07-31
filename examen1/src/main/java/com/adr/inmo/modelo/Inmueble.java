@@ -13,7 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+// hay que importar el hibernate.annotations.NamedQueries no el presistence
+import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
 /**
@@ -23,9 +24,14 @@ import org.hibernate.annotations.NamedQuery;
 @Table(name="Inmueble"
     ,catalog="teide2014"
 )
+@NamedQueries({
 @NamedQuery(name="inmueble.buscador",
-query="from Inmueble e where e.direccion like :texto")
+query="from Inmueble e where e.direccion like :texto"),
 
+@NamedQuery(name="inmueble.buscador",
+		query="from Inmueble e where e.precio like :texto")
+
+})
 
 public class Inmueble  implements java.io.Serializable {
 
